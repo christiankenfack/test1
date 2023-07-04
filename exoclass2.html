@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Book {
+
+            #page = 1//pour rendre la variable page privee et accessible partout dans la classe
+
+            constructor(Title, pages) {
+                this.Title = Title;
+                this.pages = pages;
+
+            }
+            get page() {
+                return this.#page
+            }
+            nextPage() {
+                if (this.#page < this.#page) {
+                    this.#page++
+                }
+            }
+            close() {
+                return this.#page = 1;
+            }
+
+        }
+        class Library {
+
+            #books = []//pour enregister les livres au meme endroit
+
+            addbook(book) {
+                this.#books.push(book)//la methode push pour pousser un nouvel element dans le tableau
+            }
+
+            addbooks(books) {
+                for (let book of books) {
+                    this.addbook(book)
+                }
+            }
+
+            findBookByletter(letter) {
+                const found = []
+                for (let book of this.#books) {
+                    if (book.Title[0].toLowerCase() === letter.toLowerCase()) {
+                        found.push(book)
+                    }
+                }
+                return found
+            }/*fonction qui permet d'ajouter au tableau found le nombre de livre donc la premiere lettre commence par 
+             celle entree en parametre*/
+        }
+        const b = new Book('Seigneur des anneaux', 200);
+        console.log(b.page);
+        b.nextPage();
+        console.log(b.page);
+        b.close();
+        console.log(b.page);
+
+        const l = new Library();
+        l.addbook(b);
+        l.addbooks([
+            new Book('Ready player one', 100),
+            new Book('Oui Oui', 10),
+            new Book('Sillage', 50)
+        ])
+        console.log(l.findBookByletter('o'));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
